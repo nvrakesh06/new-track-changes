@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       
       - name: Get changed files
         run : |
@@ -21,4 +23,3 @@ jobs:
                             -H "X-Github-Api-Version: 2022-11-28" \
                             $URL | jq -r'files[].filename')
           echo "$CHANGED_FILES" > changed_files.txt
-          
